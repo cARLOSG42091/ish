@@ -55,9 +55,10 @@
             read_prep \size, \op\size\()_\rep
             mov\ss (%_addrq), %tmp\s
             setf_a src=%\a, dst=%tmp\s, ss=\ss
-            sub\ss %\a, %tmp\s
+            mov\ss %\a, %r14\s
+            sub\ss %tmp\s, %r14\s
             setf_oc
-            setf_zsp %tmp\s, \ss
+            setf_zsp %r14\s, \ss
 
         .else; .ifc \op, cmps
             movl %esi, %_addr
